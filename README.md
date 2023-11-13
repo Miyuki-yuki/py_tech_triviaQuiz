@@ -1,30 +1,64 @@
 # Tech Trivia Quiz
 
-## Overview
-`tech_trivia_quiz.py` is an interactive Python script that quizzes users on technology-related trivia. The quiz consists of multiple-choice questions that cover a variety of tech topics, from computer basics to programming languages and web development.
-
-## How to Run
-To start the quiz, run the script with Python and specify the number of questions you want to be quizzed on. If no number is specified, the default is set to 15 questions.
-
-```bash
-python tech_trivia_quiz.py [number_of_questions]
-```
-
-Example:
-```bash
-python tech_trivia_quiz.py 10
-```
-
-This command starts a quiz with 10 questions.
-
-## Requirements
-- Python 3.x
+A web-based trivia quiz application for tech enthusiasts. Test your knowledge with a variety of questions covering different areas of technology.
 
 ## Features
-- Multiple-choice questions about technology.
-- Immediate feedback on answers.
-- Score summary at the end of the quiz.
 
-## Contributing
-Feel free to fork the repository, make changes, and submit pull requests with improvements to the quiz questions or the code itself.
+- Randomized questions each time the quiz is started.
+- Interactive UI with immediate feedback on answers.
+- Responsive design for desktop and mobile devices.
+- Score tracking and display at the end of the quiz.
+
+## Technologies Used
+
+- Flask (Python web framework)
+- HTML
+- CSS
+
+## Getting Started
+
+To run the Tech Trivia Quiz locally, follow these steps:
+
+### Prerequisites
+
+- Python 3
+- pip (Python package installer)
+
+### Installation
+
+1. Clone the repository:
+ 
+2. Navigate to the project directory:
+   ```sh
+   cd tech-trivia-quiz
+   ```
+3. Install the required Python packages:
+   ```sh
+   pip install -r requirements.txt
+   ```
+4. Start the Flask server:
+   ```sh
+   python app.py
+   ```
+5. Open your web browser and navigate to:
+   ```
+   http://127.0.0.1:5000/
+   ```
+
+## How to Play
+
+- Click 'Start Quiz' to begin.
+- Answer each question presented by selecting the option you believe is correct and clicking 'Next'.
+- After the last question, your score will be displayed along with an option to retry the quiz.
+
+## Contributions
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
 
