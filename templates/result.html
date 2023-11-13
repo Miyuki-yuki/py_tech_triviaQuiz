@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Your Quiz Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+
+  <body>
+    <h1>Your Quiz Results</h1>
+    <div class="score-display">
+      You scored {{ score }} out of {{ total }}
+    </div>
+    <p class="comment">You did well!!</p>
+    <!-- Add a "Try Again" button -->
+    <div class="try-again-container">
+      <a href="/" class="btn btn-try-again">Try again</a>
+    </div>
+  </body>
+
+</html>

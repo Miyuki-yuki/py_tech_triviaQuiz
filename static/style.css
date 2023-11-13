@@ -1,0 +1,276 @@
+/* General Page Styling */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background-image: url('/static/sky3.jpg');
+  /* Reference the image from the static directory */
+  background-size: cover;
+  /* Cover the entire page */
+  background-position: center;
+  /* Center the image on the page */
+  background-repeat: no-repeat;
+  background-color: #f3f4f6;
+  /* Light grey for a modern, neutral background */
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1 {
+  color: #2c3e50;
+  /* Navy blue for a sophisticated contrast */
+  background-color: rgba(255, 255, 255, 0.85);
+  /* Lighter grey for the header */
+  padding: 20px 0;
+  margin-bottom: 30px;
+  border-bottom: 3px solid #4b8ead;
+  /* Soft blue accent border */
+  font-size: 2em;
+}
+
+/* Form Styling */
+form {
+  margin: 20px auto;
+  width: 50%;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+form:hover {
+  transform: scale(1.02);
+}
+
+/* Question Options Styling */
+form div {
+  margin-bottom: 20px;
+}
+
+input[type=radio] {
+  margin-right: 15px;
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+input[type=radio]:hover,
+input[type=radio]:focus {
+  transform: scale(1.3);
+}
+
+label {
+  margin-left: 5px;
+  font-size: 1em;
+}
+
+/* Submit Button Styling */
+input[type=submit] {
+  width: 100%;
+  background-image: linear-gradient(to right, #76b2fe, #b69efe);
+  /* Gradient from soft blue to lavender */
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.5em;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+input[type=submit]:hover {
+  background-image: linear-gradient(to right, #4d90fe, #a476fe);
+  /* Darker gradient on hover */
+  transform: translateY(-3px);
+}
+
+/* Start button container styling */
+.start-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Full height to center vertically */
+  padding: 0 20px;
+  /* Padding to ensure content is within view on smaller screens */
+}
+
+/* Start Quiz Button Styling */
+.btn-start-quiz {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #76b2fe;
+  /* Soft blue, change as needed */
+  border: none;
+  border-radius: 25px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.btn-start-quiz:hover {
+  background-color: #92c6fd;
+  /* Lighter blue on hover */
+  transform: translateY(-2px);
+}
+
+/* Feedback Message Styling */
+.feedback {
+  color: #f76c6c;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 70%;
+  /* Center vertically */
+  left: 50%;
+  /* Center horizontally */
+  transform: translate(-50%, -50%);
+  /* Center the div on the page */
+  width: auto;
+  /* Auto width based on content */
+  max-width: 90%;
+  /* Max width to ensure padding on small screens */
+  text-align: center;
+  /* Center the text */
+  font-size: 1.5em;
+  /* Adjusted font size */
+  font-weight: bold;
+  margin: 20px;
+  height: auto;
+  /* Auto height based on content */
+
+}
+
+.feedback {
+  height: 100px;
+  /* Reserve space for feedback */
+  line-height: 70px;
+  /* Center text vertically */
+  color: #e74c3c;
+  background-color: #e7ecef;
+  /* Red color for incorrect feedback */
+  font-weight: bold;
+  margin: 20px;
+}
+
+/* Correct feedback color */
+.feedback.correct {
+  color: #27ae60;
+  background-color: #e7ecef;
+
+
+  /* Green color for correct feedback */
+}
+
+/* ... existing styles ... */
+
+/* Comment Styling */
+.comment {
+  font-size: 2.5em;
+  /* Larger font size for visibility */
+  color: #f2f0e5;
+  /* Color that indicates a positive result */
+  font-weight: bold;
+  /* Make the font bold */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
+  /* Spacing around the comment */
+}
+
+/* Score Display Styling */
+.score-display {
+  font-size: 3em;
+  /* Large font size for visibility */
+  font-weight: bold;
+  /* Bold font weight for emphasis */
+  color: #ffffff;
+  /* White color for contrast, adjust as needed */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* Text shadow for better legibility on a varied background */
+  margin: 20px 0;
+  /* Space above and below the score */
+}
+
+
+/* Try Again Button Container Styling */
+.try-again-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  /* Space above the try again button */
+}
+
+/* Try Again Button Styling */
+.btn-try-again {
+  padding: 15px 30px;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background-color: #76b2fe;
+  /* Soft blue, you can choose a different color if you like */
+  border: none;
+  border-radius: 25px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.btn-try-again:hover {
+  background-color: #92c6fd;
+  /* Lighter blue on hover */
+  transform: translateY(-2px);
+}
+
+/* ... existing responsive styles ... */
+
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .score-display {
+    font-size: 2em;
+    /* Slightly smaller font size for mobile devices */
+  }
+
+  .comment {
+    font-size: 2em;
+    /* Slightly smaller font size for mobile devices */
+  }
+
+  form {
+    width: 80%;
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  .start-button-container {
+    height: auto;
+    /* Height auto for mobile devices */
+    padding-top: 20vh;
+    /* Provide some top padding on mobile */
+  }
+
+  .btn-start-quiz {
+    font-size: 16px;
+    padding: 12px 24px;
+    /* Slightly smaller padding on mobile */
+  }
+
+}

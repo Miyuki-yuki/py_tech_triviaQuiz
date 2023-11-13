@@ -1,55 +1,131 @@
-# filename: tech_trivia_quiz.py
 import sys
 
 class Question:
-    def __init__(self, prompt, answer, correct_answer_text):
+    def __init__(self, prompt, answer, correct_answer_text, options, id):
         self.prompt = prompt
         self.answer = answer
         self.correct_answer_text = correct_answer_text
+        self.options = options
+        self.id = id
 
-questions_prompts = [
-    "What does CPU stand for?\n(a) Central Process Unit\n(b) Central Processor Unit\n(c) Central Processing Unit\n(d) Central Processed Unit\n",
-    "In web design, what does CSS stand for?\n(a) Cascading Style Sheet\n(b) Computer Style Sheet\n(c) Cascading Style Script\n(d) Computer Style Script\n",
-    "What language is a standard for relational database management systems?\n(a) Ruby\n(b) Python\n(c) SQL\n(d) Java\n",
-    "What does the 'MP' stand for in MP3?\n(a) Moving Picture\n(b) Music Player\n(c) Multi Pass\n(d) Micro Point\n",
-    "Which language is used for web apps?\n(a) PHP\n(b) Python\n(c) Java\n(d) All\n",
-    "What is the primary purpose of an operating system?\n(a) Manage Hardware\n(b) Run Applications\n(c) Security\n(d) All of the above\n",
-    "What is the extension for Python files?\n(a) .py\n(b) .pt\n(c) .pn\n(d) .pm\n",
-    "What does HTTP stand for?\n(a) HyperText Transfer Protocol\n(b) Hyper Transfer Text Protocol\n(c) High-Level Text Transfer Protocol\n(d) HyperText Technical Protocol\n",
-    "What is the main function of the ALU (Arithmetic Logic Unit)?\n(a) Perform arithmetic and logical operations\n(b) Manage memory and storage\n(c) Control input and output devices\n(d) Fetch instructions from memory\n",
-    "What is a common use for Python?\n(a) Web Development\n(b) Data Analysis\n(c) Artificial Intelligence\n(d) All of the above\n",
-    "What does GPU stand for?\n(a) General Processing Unit\n(b) Graphical Processing Unit\n(c) Graphical Performance Unit\n(d) General Purpose Unit\n",
-    "What is the primary purpose of a database?\n(a) Store data\n(b) Retrieve data\n(c) Manage data\n(d) All of the above\n",
-    "What does the acronym 'RAM' stand for?\n(a) Random Access Memory\n(b) Read Access Memory\n(c) Randomly Allocated Memory\n(d) Read Allocated Memory\n",
-    "What language is primarily used for handling the back-end of web applications?\n(a) JavaScript\n(b) HTML\n(c) SQL\n(d) PHP\n",
-    "What is a key characteristic of Object-Oriented Programming (OOP)?\n(a) Encapsulation\n(b) Inheritance\n(c) Polymorphism\n(d) All of the above\n",
 
-]
-
+# Initialize questions with all required attributes
 questions = [
-    Question(questions_prompts[0], "c", "Central Processing Unit"),
-    Question(questions_prompts[1], "a", "Cascading Style Sheet"),
-    Question(questions_prompts[2], "c", "SQL"),
-    Question(questions_prompts[3], "a", "Moving Picture"),
-    Question(questions_prompts[4], "d", "All"),
-    Question(questions_prompts[5], "d", "All of the above"),
-    Question(questions_prompts[6], "a", ".py"),
-    Question(questions_prompts[7], "a", "HyperText Transfer Protocol"),
-    Question(questions_prompts[8], "a", "Perform arithmetic and logical operations"),
-    Question(questions_prompts[9], "d", "All of the above"),
-    Question(questions_prompts[10], "b", "Graphical Processing Unit"),
-    Question(questions_prompts[11], "d", "All of the above"),
-    Question(questions_prompts[12], "a", "Random Access Memory"),
-    Question(questions_prompts[13], "d", "PHP"),
-    Question(questions_prompts[14], "d", "All of the above"),
-
+    Question(
+        prompt="Which country first started using emojis in their digital communications?",
+        answer="b",
+        correct_answer_text="Japan",
+        options=["United States", "Japan", "South Korea", "China"],
+        id="fun_question1"
+    ),
+    Question(
+        prompt="What was Google's original name?",
+        answer="b",
+        correct_answer_text="Backrub",
+        options=["Googol", "Backrub", "WebSearch", "ByteDance"],
+        id="fun_question2"
+    ),
+    Question(
+        prompt="Which was the first commercially successful video game?",
+        answer="a",
+        correct_answer_text="Pong",
+        options=["Pong", "Pac-Man", "Space Invaders", "Super Mario Bros"],
+        id="fun_question3"
+    ),
+    Question(
+        prompt="What is the name of the first ever artificial satellite launched into space?",
+        answer="b",
+        correct_answer_text="Sputnik",
+        options=["Voyager", "Sputnik", "Apollo", "Hubble"],
+        id="fun_question4"
+    ),
+    Question(
+        prompt="In the movie 'The Matrix', what color is the pill Neo takes?",
+        answer="a",
+        correct_answer_text="Red",
+        options=["Red", "Blue", "Green", "Yellow"],
+        id="fun_question5"
+    ),
+    Question(
+        prompt="Who was the first person to reach 1 million Twitter followers?",
+        answer="c",
+        correct_answer_text="Ashton Kutcher",
+        options=["Barack Obama", "Justin Bieber", "Ashton Kutcher", "Lady Gaga"],
+        id="fun_question6"
+    ),
+    Question(
+        prompt="The Apple logo is a tribute to which historical figure?",
+        answer="a",
+        correct_answer_text="Isaac Newton",
+        options=["Isaac Newton", "Albert Einstein", "Nikola Tesla", "Thomas Edison"],
+        id="fun_question7"
+    ),
+    Question(
+        prompt="What does 'IoT' stand for in the world of technology?",
+        answer="a",
+        correct_answer_text="Internet of Things",
+        options=["Internet of Things", "Integration of Technology", "Internal Online Transfer", "International Operational Tech"],
+        id="fun_question8"
+    ),
+    Question(
+        prompt="What was the first smartphone to use the Android operating system?",
+        answer="a",
+        correct_answer_text="HTC Dream",
+        options=["HTC Dream", "Samsung Galaxy", "Motorola Droid", "Sony Xperia"],
+        id="fun_question9"
+    ),
+    Question(
+        prompt="Who is considered a pioneer in Virtual Reality technology?",
+        answer="c",
+        correct_answer_text="Palmer Luckey",
+        options=["Mark Zuckerberg", "Steve Jobs", "Palmer Luckey", "Elon Musk"],
+        id="fun_question10"
+    ),
+    Question(
+        prompt="What was the first product ever sold on Amazon?",
+        answer="a",
+        correct_answer_text="A book",
+        options=["A book", "A CD", "A VHS tape", "A computer mouse"],
+        id="fun_question11"
+    ),
+    Question(
+        prompt="Who is known as the 'Mother of Computing'?",
+        answer="a",
+        correct_answer_text="Ada Lovelace",
+        options=["Ada Lovelace", "Grace Hopper", "Joan Clarke", "Hedy Lamarr"],
+        id="fun_question12"
+    ),
+    Question(
+        prompt="In computing, what does 'USB' stand for?",
+        answer="a",
+        correct_answer_text="Universal Serial Bus",
+        options=["Universal Serial Bus", "United System Box", "Universal System Backup", "Unified Serial Bridge"],
+        id="fun_question13"
+    ),
+    Question(
+        prompt="What was the first image ever posted on the Internet?",
+        answer="b",
+        correct_answer_text="A band's promotional photo",
+        options=["A cat", "A band's promotional photo", "A science experiment", "A world map"],
+        id="fun_question14"
+    ),
+    Question(
+        prompt="Which year was Wi-Fi invented?",
+        answer="c",
+        correct_answer_text="1997",
+        options=["1985", "1991", "1997", "2003"],
+        id="fun_question15"
+    ),
 ]
 
 def run_quiz(questions, num_questions):
     score = 0
     for question in questions[:num_questions]:
-        answer = input(question.prompt)
-        if answer == question.answer:
+        print(question.prompt)
+        for i, option in enumerate(question.options, start=1):
+            print(f"({chr(96 + i)}) {option}")
+        answer = input("Your answer: ")
+        if answer.lower() == chr(96 + question.options.index(question.correct_answer_text) + 1):
             print("**Correct!**")
             score += 1
         else:

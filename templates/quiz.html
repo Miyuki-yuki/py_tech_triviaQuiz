@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Quiz Question</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+
+  <body>
+    <h1>Quiz Question</h1>
+    {% if feedback %}
+    <div class="feedback {% if feedback == 'Correct!' %}correct{% endif %}">
+      {{ feedback }} <!-- Feedback message should be inside the div -->
+    </div>
+    {% endif %}
+    <!-- The form should be outside the feedback if-else block -->
+    <form action="/quiz" method="post">
+      <div>
+        <p>{{ question.prompt }}</p>
+        {% for option in question.options %}
+        <input type="radio" name="answer" value="{{ 'abcd'[loop.index0] }}"> {{ option }}<br>
+        {% endfor %}
+      </div>
+      <input type="submit" value="Next">
+    </form>
+  </body>
+
+</html>
