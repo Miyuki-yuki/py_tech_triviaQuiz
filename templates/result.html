@@ -5,18 +5,192 @@
     <meta charset="UTF-8">
     <title>Your Quiz Results</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js/dist/fireworks.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1/dist/confetti.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+
   </head>
 
   <body>
+    <!-- Fireworks container; hidden by default -->
+    <div id="fireworks" style="display: none;">
+      <!-- Fireworks animation would be controlled by JavaScript -->
+    </div>
+
     <h1>Your Quiz Results</h1>
     <div class="score-display">
       You scored {{ score }} out of {{ total }}
     </div>
+
+    <!-- Determine the comment based on the score -->
+    {% if score == total %}
+    <p class="comment">Fantastic!! You did great!!!</p>
+    <!-- Load the fireworks JavaScript for a full score -->
+    <script src="{{ url_for('static', filename='fireworks.js') }}"></script>
+    {% elif score > total // 2 %}
     <p class="comment">You did well!!</p>
-    <!-- Add a "Try Again" button -->
+    {% else %}
+    <p class="comment">Good effort! Try again to improve your score.</p>
+    {% endif %}
+
+    <!-- Try Again button -->
     <div class="try-again-container">
+
       <a href="/" class="btn btn-try-again">Try again</a>
     </div>
+
+    {% if score == total %}
+    <script>
+      // Run this function when the DOM is ready
+      document.addEventListener('DOMContentLoaded', function () {
+        // Set up the confetti parameters
+        var duration = 15 * 1000; // Duration in milliseconds
+        var animationEnd = Date.now() + duration;
+        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+        function randomInRange(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+
+        var interval = setInterval(function () {
+          var timeLeft = animationEnd - Date.now();
+
+          if (timeLeft <= 0) {
+            return clearInterval(interval);
+          }
+
+          var particleCount = 50 * (timeLeft / duration);
+          // since particles fall down, start a bit higher than random
+          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+          confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+        }, 250);
+      });
+    </script>
+    {% endif %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var score = {{ score | tojson
+      }};
+      var total = {{ total | tojson }};
+      var message = '';
+      var messageElement = document.querySelector('.comment'); // Make sure you have a <p class="comment"></p> in your HTML
+
+      if (score >= 11 && score <= 14) {
+        message = 'You did well';
+        // Call function to trigger fireworks
+        triggerFireworks();
+      } else if (score >= 6 && score <= 10) {
+        message = 'Not bad. Keep going!';
+        // Call function to trigger a moderate effect
+        triggerModerateEffect();
+      } else if (score >= 1 && score <= 5) {
+        message = 'Try harder.';
+        // Call function to trigger a simple effect
+        triggerSimpleEffect();
+      }
+
+      messageElement.textContent = message; // Display the message
+      });
+
+      function triggerFireworks() {
+        // Initialize confetti for a full score
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+
+      function triggerModerateEffect() {
+        // Example of a moderate effect, like a few confetti bursts
+        for (let i = 0; i < 5; i++) {
+          setTimeout(function () {
+            confetti({
+              particleCount: 10,
+              startVelocity: 30,
+              spread: 360,
+              ticks: 60,
+              origin: {
+                x: Math.random(),
+                y: Math.random() - 0.2
+              }
+            });
+          }, i * 200);
+        }
+      }
+
+      function triggerSimpleEffect() {
+        // Example of a simple effect, like a small burst
+        confetti({
+          particleCount: 25,
+          startVelocity: 20,
+          spread: 360,
+          ticks: 60,
+          origin: {
+            x: 0.5,
+            y: 0.5
+          }
+        });
+      }
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Assume 'score' and 'total' are passed from Flask as JSON script
+        var score = {{ score | tojson
+      }};
+      var total = {{ total | tojson }};
+
+      if (score == total) {
+        // Initialize confetti
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+      });
+    </script>
+
+    <!-- Include fireworks logic if the user got a full score -->
+    {% if score == total %}
+    <script>
+      const fireworks = new Fireworks({
+        target: 'fireworks', // id of the container
+        hue: 120,
+        startDelay: 1,
+        minDelay: 20,
+        maxDelay: 30,
+        speed: 4,
+        acceleration: 1.05,
+        friction: 0.95,
+        gravity: 1.5,
+        particles: 75,
+        trace: 3,
+        explosion: 5,
+        boundaries: {
+          top: 50,
+          bottom: screen.height,
+          left: 50,
+          right: screen.width
+        },
+        sound: {
+          enable: false,
+          list: [
+            'explosion0.mp3',
+            'explosion1.mp3',
+            'explosion2.mp3'
+          ],
+          min: 4,
+          max: 8
+        }
+      });
+      fireworks.start();
+    </script>
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+
   </body>
 
 </html>
